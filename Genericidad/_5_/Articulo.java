@@ -1,18 +1,18 @@
 package Genericidad._5_;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Articulo extends Publicacion {
     private String revista;
     private int volumen;
-    private List<Autor> autores;
+    private Autor[] autores;
+    private int nAutores;
+    private static final int MAX_AUTORES = 10;
 
     public Articulo(String titulo, int anioPublicacion, String revista, int volumen) {
         super(titulo, anioPublicacion);
         this.revista = revista;
         this.volumen = volumen;
-        this.autores = new ArrayList<>();
+        this.autores = new Autor[MAX_AUTORES];
+        this.nAutores = 0;
     }
 
     public String getRevista() {
@@ -31,12 +31,16 @@ public class Articulo extends Publicacion {
         this.volumen = volumen;
     }
 
-    public List<Autor> getAutores() {
+    public Autor[] getAutores() {
         return autores;
     }
 
     public void agregarAutor(Autor autor) {
-        autores.add(autor);
+        if (nAutores < MAX_AUTORES) {
+            autores[nAutores++] = autor;
+        } else {
+            System.out.println("No se pueden agregar más autores, límite alcanzado.");
+        }
     }
 
     @Override
@@ -47,9 +51,9 @@ public class Articulo extends Publicacion {
         System.out.println("Revista: " + revista);
         System.out.println("Volumen: " + volumen);
         System.out.println("Autores:");
-        for (Autor autor : autores) {
-            autor.mostrarAutor();
+        for (int i = 0; i < nAutores; i++) {
+            autores[i].mostrarAutor();
         }
-        System.out.println("====================");
+        System.out.println("================");
     }
 }

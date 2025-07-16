@@ -24,7 +24,7 @@ public class Main {
         articulo1.agregarAutor(autor2);
         articulo1.agregarAutor(autor3);
 
-        Tesis tesis1 = new Tesis("Impacto de la literatura contemporánea", 2021, "Doctorado en Literatura", "Dr. Pedro Martínez", "Literatura Latinoamericana");
+        Tesis tesis1 = new Tesis("Impacto de la Globalización en la Literatura Contemporánea", 2021, "Doctorado en Literatura", "Dr. Pedro Martínez", "Literatura Latinoamericana");
         tesis1.agregarAutor(autor4);
 
         repositorioPublicaciones.agregar(libro1);
