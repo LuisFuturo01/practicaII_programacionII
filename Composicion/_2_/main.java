@@ -2,15 +2,12 @@ package Composicion._2_;
 
 public class main {
     public static void main(String[] args) {
-        // Crear empresa
         Empresa empresa = new Empresa("TechSolutions");
         
-        // Crear departamentos
         Departamento deptIT = new Departamento("Tecnología", 100000.0);
         Departamento deptRRHH = new Departamento("Recursos Humanos", 50000.0);
         Departamento deptVentas = new Departamento("Ventas", 75000.0);
         
-        // Crear empleados
         Empleado emp1 = new Empleado("Juan Pérez", 5000.0);
         Empleado emp2 = new Empleado("María García", 6000.0);
         Empleado emp3 = new Empleado("Carlos López", 4500.0);
@@ -18,7 +15,6 @@ public class main {
         Empleado emp5 = new Empleado("Luis Vargas", 4000.0);
         Empleado emp6 = new Empleado("Sofia Quispe", 5200.0);
         
-        // Agregar empleados a departamentos
         deptIT.agregarEmpleado(emp1);
         deptIT.agregarEmpleado(emp2);
         deptRRHH.agregarEmpleado(emp3);
@@ -26,12 +22,10 @@ public class main {
         deptVentas.agregarEmpleado(emp5);
         deptVentas.agregarEmpleado(emp6);
         
-        // Agregar departamentos a empresa
         empresa.agregarDepartamento(deptIT);
         empresa.agregarDepartamento(deptRRHH);
         empresa.agregarDepartamento(deptVentas);
         
-        // Probar métodos
         System.out.println("=== SALARIOS TOTALES POR DEPARTAMENTO ===");
         System.out.println("Departamento IT: Bs. " + deptIT.calcularSalarioTotalDepartamento());
         System.out.println("Departamento RRHH: Bs. " + deptRRHH.calcularSalarioTotalDepartamento());

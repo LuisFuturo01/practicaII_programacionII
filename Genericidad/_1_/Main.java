@@ -2,7 +2,6 @@ package Genericidad._1_;
 
 public class Main {
     public static void main(String[] args) {
-        // Crear pares de diferentes tipos
         Par<String, Integer> par1 = new Par<>("Hola", 42);
         Par<Integer, Integer> par2 = new Par<>(10, 10);
         Par<String, String> par3 = new Par<>("Mundo", "Mundo");

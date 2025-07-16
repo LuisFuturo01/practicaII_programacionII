@@ -9,7 +9,6 @@ public class Empresa {
         this.nombre = nombre;
         this.departamentos = new Departamento[10];
         this.nDepartamentos = 0;
-        // Creamos departamentos por defecto (composición)
         departamentos[0] = new Departamento("Recursos Humanos");
         departamentos[1] = new Departamento("Desarrollo");
         departamentos[2] = new Departamento("Ventas");

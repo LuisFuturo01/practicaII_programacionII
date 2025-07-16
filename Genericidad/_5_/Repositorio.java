@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Repositorio<T> {
     private List<T> items;
-    
+
     public Repositorio() {
         this.items = new ArrayList<>();
     }
-    
+
     public void agregar(T item) {
         items.add(item);
         System.out.println("Item agregado al repositorio: " + item.getClass().getSimpleName());
     }
-    
+
     public boolean eliminar(T item) {
         boolean eliminado = items.remove(item);
         if (eliminado) {
@@ -24,7 +24,7 @@ public class Repositorio<T> {
         }
         return eliminado;
     }
-    
+
     public void mostrarTodo() {
         System.out.println("=== CONTENIDO DEL REPOSITORIO ===");
         if (items.isEmpty()) {
@@ -42,11 +42,11 @@ public class Repositorio<T> {
         }
         System.out.println("===============================");
     }
-    
+
     public List<T> getItems() {
         return items;
     }
-    
+
     public int size() {
         return items.size();
     }

@@ -26,9 +26,9 @@ public class main {
         Empleado emp2 = new Empleado("Luis Vargas", "Desarrollador");
         Empleado emp3 = new Empleado("Sofia Quispe", "Analista");
         
-        empresa.getDepartamentos().get(0).agregarEmpleado(emp1);
-        empresa.getDepartamentos().get(1).agregarEmpleado(emp2);
-        empresa.getDepartamentos().get(2).agregarEmpleado(emp3);
+        empresa.getDepartamentos()[0].agregarEmpleado(emp1);
+        empresa.getDepartamentos()[1].agregarEmpleado(emp2); 
+        empresa.getDepartamentos()[2].agregarEmpleado(emp3);
         
         empresa.mostrarDepartamentos();
     }

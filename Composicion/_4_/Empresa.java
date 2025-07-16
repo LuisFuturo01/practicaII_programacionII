@@ -1,78 +1,94 @@
 package Composicion._4_;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Empresa {
     private String nombre;
     private String ruc;
-    private List<Empleado> empleados;
-    private List<Cliente> clientes;
-    
+    private Empleado[] empleados;
+    private int nEmpleados;
+    private Cliente[] clientes;
+    private int nClientes;
+    private static final int MAX_EMPLEADOS = 50;
+    private static final int MAX_CLIENTES = 50;
+
     public Empresa(String nombre, String ruc) {
         this.nombre = nombre;
         this.ruc = ruc;
-        this.empleados = new ArrayList<>();
-        this.clientes = new ArrayList<>();
+        this.empleados = new Empleado[MAX_EMPLEADOS];
+        this.nEmpleados = 0;
+        this.clientes = new Cliente[MAX_CLIENTES];
+        this.nClientes = 0;
     }
-    
+
     public String getNombre() {return nombre;}
     public String getRuc() {return ruc;}
-    public List<Empleado> getEmpleados() {return empleados;}
-    public List<Cliente> getClientes() {return clientes;}
-    
+    public Empleado[] getEmpleados() {return empleados;}
+    public Cliente[] getClientes() {return clientes;}
+
     public void setNombre(String nombre) {this.nombre = nombre;}
     public void setRuc(String ruc) {this.ruc = ruc;}
-    
+
     public void agregarEmpleado(Empleado empleado) {
-        this.empleados.add(empleado);
+        if (nEmpleados < MAX_EMPLEADOS) {
+            this.empleados[nEmpleados] = empleado;
+            nEmpleados++;
+        } else {
+            System.out.println("No se puede agregar más empleados, la empresa está llena de empleados.");
+        }
     }
-    
+
     public void agregarCliente(Cliente cliente) {
-        this.clientes.add(cliente);
+        if (nClientes < MAX_CLIENTES) {
+            this.clientes[nClientes] = cliente;
+            nClientes++;
+        } else {
+            System.out.println("No se puede agregar más clientes, la empresa está llena de clientes.");
+        }
     }
-    
-    // Método para eliminar empleados que también son clientes
+
     public void eliminarEmpleadosQueEsCliente() {
-        List<Empleado> empleadosAEliminar = new ArrayList<>();
-        
-        for (Empleado empleado : empleados) {
-            for (Cliente cliente : clientes) {
-                if (empleado.getCi().equals(cliente.getCi())) {
-                    empleadosAEliminar.add(empleado);
-                    System.out.println("Eliminando empleado que también es cliente: " + empleado.getNombre());
+        Empleado[] tempEmpleados = new Empleado[MAX_EMPLEADOS];
+        int newNEmpleados = 0;
+
+        for (int i = 0; i < nEmpleados; i++) {
+            Empleado actualEmpleado = empleados[i];
+            boolean esCliente = false;
+            for (int j = 0; j < nClientes; j++) {
+                if (actualEmpleado.getCi().equals(clientes[j].getCi())) {
+                    esCliente = true;
+                    System.out.println("Eliminando empleado que también es cliente: " + actualEmpleado.getNombre());
                     break;
                 }
             }
+            if (!esCliente) {
+                tempEmpleados[newNEmpleados] = actualEmpleado;
+                newNEmpleados++;
+            }
         }
-        
-        empleados.removeAll(empleadosAEliminar);
+        this.empleados = tempEmpleados;
+        this.nEmpleados = newNEmpleados;
     }
-    
-    // Método para mostrar cargo de empleado por CI
+
     public void mostrarCargoEmpleado(String ci) {
-        for (Empleado empleado : empleados) {
-            if (empleado.getCi().equals(ci)) {
-                System.out.println("El empleado con CI " + ci + " tiene el cargo: " + empleado.getCargo());
+        for (int i = 0; i < nEmpleados; i++) {
+            if (empleados[i].getCi().equals(ci)) {
+                System.out.println("El empleado con CI " + ci + " tiene el cargo: " + empleados[i].getCargo());
                 return;
             }
         }
         System.out.println("No se encontró empleado con CI: " + ci);
     }
-    
-    // Método para mostrar lista actualizada de empleados
+
     public void mostrarEmpleados() {
         System.out.println("Lista de empleados de " + nombre + ":");
-        for (Empleado empleado : empleados) {
-            empleado.mostrarEmpleado();
+        for (int i = 0; i < nEmpleados; i++) {
+            empleados[i].mostrarEmpleado();
         }
     }
-    
-    // Método para mostrar clientes
+
     public void mostrarClientes() {
         System.out.println("Lista de clientes de " + nombre + ":");
-        for (Cliente cliente : clientes) {
-            cliente.mostrarCliente();
+        for (int i = 0; i < nClientes; i++) {
+            clientes[i].mostrarCliente();
         }
     }
 }

@@ -5,36 +5,36 @@ import java.util.List;
 
 public class Tesis extends Publicacion {
     private String grado;
-    private Asesor asesor; // Composición
-    private List<Autor> autores; // Agregación
-    
+    private Asesor asesor;
+    private List<Autor> autores;
+
     public Tesis(String titulo, int anioPublicacion, String grado, String nombreAsesor, String especialidadAsesor) {
         super(titulo, anioPublicacion);
         this.grado = grado;
-        this.asesor = new Asesor(nombreAsesor, especialidadAsesor); // Composición
+        this.asesor = new Asesor(nombreAsesor, especialidadAsesor);
         this.autores = new ArrayList<>();
     }
-    
+
     public String getGrado() {
         return grado;
     }
-    
+
     public void setGrado(String grado) {
         this.grado = grado;
     }
-    
+
     public Asesor getAsesor() {
         return asesor;
     }
-    
+
     public List<Autor> getAutores() {
         return autores;
     }
-    
+
     public void agregarAutor(Autor autor) {
         autores.add(autor);
     }
-    
+
     @Override
     public void mostrarInfo() {
         System.out.println("=== TESIS ===");
@@ -48,6 +48,6 @@ public class Tesis extends Publicacion {
         for (Autor autor : autores) {
             autor.mostrarAutor();
         }
-        System.out.println("================");
+        System.out.println("====================");
     }
 }

@@ -6,39 +6,39 @@ import java.util.List;
 public class Articulo extends Publicacion {
     private String revista;
     private int volumen;
-    private List<Autor> autores; // Agregación
-    
+    private List<Autor> autores;
+
     public Articulo(String titulo, int anioPublicacion, String revista, int volumen) {
         super(titulo, anioPublicacion);
         this.revista = revista;
         this.volumen = volumen;
         this.autores = new ArrayList<>();
     }
-    
+
     public String getRevista() {
         return revista;
     }
-    
+
     public void setRevista(String revista) {
         this.revista = revista;
     }
-    
+
     public int getVolumen() {
         return volumen;
     }
-    
+
     public void setVolumen(int volumen) {
         this.volumen = volumen;
     }
-    
+
     public List<Autor> getAutores() {
         return autores;
     }
-    
+
     public void agregarAutor(Autor autor) {
         autores.add(autor);
     }
-    
+
     @Override
     public void mostrarInfo() {
         System.out.println("=== ARTÍCULO ===");
@@ -50,6 +50,6 @@ public class Articulo extends Publicacion {
         for (Autor autor : autores) {
             autor.mostrarAutor();
         }
-        System.out.println("================");
+        System.out.println("====================");
     }
 }
